@@ -1,0 +1,23 @@
+//@version=6
+indicator("QQQ Auto Options Walls (GitHub Seed)", overlay=true)
+
+repo = input.string("prophets17/qqq-options-walls", "GitHub repo")
+seedFile = input.string("qqq_walls", "Seed file name")
+
+callWall   = request.seed(repo, seedFile, call_wall)
+putWall    = request.seed(repo, seedFile, put_wall)
+gammaFlip  = request.seed(repo, seedFile, gamma_flip)
+callWall2  = request.seed(repo, seedFile, call_wall_2)
+callWall3  = request.seed(repo, seedFile, call_wall_3)
+putWall2   = request.seed(repo, seedFile, put_wall_2)
+putWall3   = request.seed(repo, seedFile, put_wall_3)
+
+plot(callWall,  "Call Wall",   color=color.red,    linewidth=3, style=plot.style_linebr)
+plot(callWall2, "Call Wall 2", color=color.new(color.red, 25), linewidth=2, style=plot.style_linebr)
+plot(callWall3, "Call Wall 3", color=color.new(color.red, 50), linewidth=2, style=plot.style_linebr)
+
+plot(putWall,   "Put Wall",    color=color.green,  linewidth=3, style=plot.style_linebr)
+plot(putWall2,  "Put Wall 2",  color=color.new(color.green, 25), linewidth=2, style=plot.style_linebr)
+plot(putWall3,  "Put Wall 3",  color=color.new(color.green, 50), linewidth=2, style=plot.style_linebr)
+
+plot(gammaFlip, "Gamma Flip",  color=color.yellow, linewidth=3, style=plot.style_linebr)
